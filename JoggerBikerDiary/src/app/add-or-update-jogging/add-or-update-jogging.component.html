@@ -1,0 +1,22 @@
+<div>
+  <h2 *ngIf="!joggingInfo || joggingInfo.id === undefined">Add record</h2>
+  <h2 *ngIf="joggingInfo && joggingInfo.id !== undefined">Update record (ID: )</h2>
+  <form name="diaryForm">
+    <button type="button" class="close" aria-label="Close" (click)="closeClicked($event);">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      <div class="form-group">
+          <label for="date-input">Jogging date:</label>
+          <input name="date" type="date" id="date-input" [(ngModel)]= "joggingInfo.date" class="form-control" />
+      </div>
+      <div class="form-group">
+          <label for="distance-input">Distance (m)</label>
+          <input name="distance" type="number" id="distance-input" [(ngModel)]="joggingInfo.distanceInMeters" (input)="joggingInfo.distanceInMeters = $event.target.value" class="form-control" />
+      </div>
+      <div class="form-group">
+          <label for="time-input">Time (s)</label>
+          <input name="time" type="number" id="time-input" [(ngModel)]="joggingInfo.timeInSeconds" (input)="joggingInfo.timeInSeconds = $event.target.value" class="form-control" />
+      </div>
+      <button name="Save" type="button" class="btn btn-primary" (click)="addOrUpdateJoggingRecord($event);">Save</button>
+  </form>
+</div>

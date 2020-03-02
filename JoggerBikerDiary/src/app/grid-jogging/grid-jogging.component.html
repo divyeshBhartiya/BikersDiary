@@ -1,0 +1,28 @@
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>Date</th>
+        <th>Distance (m)</th>
+        <th>Time (mins)</th>
+        <th>Average speed (m/sec)</th>
+        <th>Commands</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let joggingInfo of joggingData ; trackBy:customTrackBy">
+        <td>{{ joggingInfo.date | date: 'MM/dd/yyyy'}}</td>
+        <td>{{ joggingInfo.distanceInMeters | number: '1.2-2' }}</td>
+        <td>{{ joggingInfo.timeInSeconds / 60 | number: '1.0-0' }}:{{ joggingInfo.timeInSeconds % 60 |number: '2.0-0' }}
+        </td>
+        <td>{{ (joggingInfo.distanceInMeters / joggingInfo.timeInSeconds) * 3.6 | number:'1.2-2' }}</td>
+        <td>
+          <a href="#" (click)="editRecord(joggingInfo)">Edit</a>
+          <a href="#" (click)="deleteRecord(joggingInfo)">Delete</a>
+        </td>
+      </tr>
+      <button name="New" type="button" class="btn btn-info" (click)="newRecord()">New</button>
+    </tbody>
+  </table>
+</div>

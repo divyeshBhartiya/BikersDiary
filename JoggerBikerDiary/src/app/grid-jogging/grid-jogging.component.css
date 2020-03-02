@@ -1,0 +1,13 @@
+table {
+  margin-top: 1.5em;
+}
+
+tbody td {
+  text-align: right;
+}
+
+.thead-dark th {
+  color: #fff;
+  background-color: #42B0CE !important;
+  border-color: #454d55;
+}
